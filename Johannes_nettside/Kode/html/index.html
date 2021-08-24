@@ -32,24 +32,24 @@
                 
                 let IMDATA = {
                     IMIT : {
-                        2 : [
-                            'Jame', 
-                            'Epler er blå',
-                            'Image',
-                            'Bio'
-                        ],
                         1 : [
+                            'Jame', 
+                            '-Epler er blå',
+                            'Image',
+                            'fdsdsfs'
+                        ],
+                        2 : [
                             'Andreas', 
                             'Epler er gul',
                             'Image',
-                            'Bio'
+                            'sdassadds'
                         ],
                     },
                     IMMP : {
                         1 : [
-                            'Jame', 
-                            'Epler er blå',
-                            'Image',
+                            'anders', 
+                            'Epler er rød',
+                            '../../Elementer/Bilder/Image.png',
                             'Bio'
                         ],
                         2 : [
@@ -80,14 +80,17 @@
                     let KlasseData = IMDATA[Klasse]
                     console.log(KlasseData)
 
-                    let Kanditat1 = KlasseData[0]
-                    let Kanditat2 = KlasseData[1]
+                    let Kanditat1 = KlasseData[1]
+                    let Kanditat2 = KlasseData[2]
 
                     console.log(Kanditat1)
                     console.log(Kanditat2)
 
-                    //Set text to display data
-                    var cols = document.getElementsByClassName('col1');
+                    //Set text to display data 1
+                    document.getElementById('Navn1').innerHTML = Kanditat1[0];
+                    document.getElementById('Slagord1').innerHTML = Kanditat1[1];
+                    document.getElementById('Img1').src = Kanditat1[2];
+                    document.getElementById('Bio1').innerHTML = Kanditat1[3];
                 }
                 //Event
                 function OnClick1Button(Klasse){
@@ -97,10 +100,10 @@
             </script>
             <p class="Kanditater-Title">Kanditater</p>
             <hr>
-            <p class="Kanditat-Navn">kanditat-Jame</p>
-            <p class="Slagord">-daajad auhdu uasdiah.</p>
-            <img src="../../Elementer/Bilder/Image.png" alt="IMG_Kanditat">
-            <p class="Kandidat-Desc">
+            <p class="Kanditat-Navn" id="Navn1" >kanditat-Jame</p>
+            <p class="Slagord" id="Slagord1">-daajad auhdu uasdiah.</p>
+            <img src="../../Elementer/Bilder/Image.png" id="Img1" alt="IMG_Kanditat">
+            <p class="Kandidat-Desc" id="Bio1">
                 id eum reque conclusionemque, 
                 vel cu dicta homero vidisse. Cu pri delicata suscipiantur, 
                 ridens nemore at pri. Vis cibo petentium ne, eu eripuit scripserit nec. 
@@ -109,10 +112,11 @@
                 tus appareat.
             </p>
             <hr>
-            <p class="Kanditat-Navn">kanditat-Andreas</p>
-            <p class="Slagord">-JOEEE</p>
-            <img src="../../Elementer/Bilder/Image.png"  alt="IMG_Kanditat">
-            <p class="Kandidat-Desc">
+            <p class="Kanditat-Navn" id="Navn1">kanditat-Jame</p>
+            <p class="Slagord" id="Slagord1">-daajad auhdu uasdiah.</p>
+            <img src="../../Elementer/Bilder/Image.png" id="Img1" alt="IMG_Kanditat">
+            <p class="Kandidat-Desc" id="Bio1">
+                id eum reque conclusionemque, 
                 vel cu dicta homero vidisse. Cu pri delicata suscipiantur, 
                 ridens nemore at pri. Vis cibo petentium ne, eu eripuit scripserit nec. 
                 Vis ea nonumy meliore dolorem, sed ne duis similique argumentum, eos sint luptatum postulant id. 
