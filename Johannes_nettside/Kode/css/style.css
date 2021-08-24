@@ -38,16 +38,16 @@
 .Kanditater hr{
     width: 100%;
 }
-.Klasse-Knapper{
+.Klasse-knapper{
     display: flex;
     align-items: center;
     justify-content:center ;
-    flex-direction: column;
-    list-style-type: none;
 
-    padding: 0;
-    margin: 0;
-    padding-inline-start: 0;
+    padding: 0px;
+}
+.Klasse-knapper button{
+    margin-right: 10px;
+    margin-left: 10px;
 }
 .Kanditater-Title{
     display: flex;
