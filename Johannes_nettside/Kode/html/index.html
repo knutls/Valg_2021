@@ -33,7 +33,7 @@
                 let IMDATA = {
                     IMIT : {
                         1 : [
-                            'Jaime', 
+                            'Jame', 
                             '-Epler er blå',
                             'Image',
                             'fdsdsfs'
@@ -85,7 +85,8 @@
 
                     console.log(Kanditat1)
                     console.log(Kanditat2)
-
+                    
+                    
                     //Set text to display data 1
                     document.getElementById('Navn1').innerHTML = Kanditat1[0];
                     document.getElementById('Slagord1').innerHTML = Kanditat1[1];
@@ -96,6 +97,14 @@
                     document.getElementById('Slagord2').innerHTML = Kanditat2[1];
                     document.getElementById('Img2').src = Kanditat2[2];
                     document.getElementById('Bio2').innerHTML = Kanditat2[3];
+                    //Make elements Visible
+                    document.getElementById("Kanditat-Titel").style.visibility = "unset";
+                    document.getElementById("Navn1").style.visibility = "unset";
+                    document.getElementById("Navn2").style.visibility = "unset";
+                    document.getElementById("Img1").style.visibility = "unset";
+                    document.getElementById("Img2").style.visibility = "unset";
+                    document.getElementById("Higlight-Line1").style.visibility = "unset";
+                    document.getElementById("Higlight-Line2").style.visibility = "unset";
                 }
                 //Event
                 function OnClick1Button(Klasse){
@@ -103,13 +112,13 @@
                     DisplayInfo(Klasse)
                 };
             </script>
-            <p class="Kanditater-Title2">Kanditater</p>
-            <hr>
+            <p class="Kanditater-Title2" id="Kanditat-Titel">Kanditater</p>
+            <hr id="Higlight-Line1">
             <p class="Kanditat-Navn" id="Navn1" ></p>
             <p class="Slagord" id="Slagord1"></p>
             <img src="" class="Kanditat-Img" id="Img1" alt="IMG_Kanditat">
             <p class="Kandidat-Desc" id="Bio1"></p>
-            <hr>
+            <hr id="Higlight-Line2">
             <p class="Kanditat-Navn" id="Navn2"></p>
             <p class="Slagord" id="Slagord2"></p>
             <img src="" class="Kanditat-Img" id="Img2" alt="IMG_Kanditat">
