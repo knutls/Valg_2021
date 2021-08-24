@@ -1,8 +1,13 @@
 *{
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 1);
 }
-
+body{
+    background-image: url(../../Elementer/Bilder/Elvebakken.jpeg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
 .TopTitle{
     display: flex;
     align-items: center;
@@ -103,6 +108,17 @@
 
     color: gray;
     width: 350px;
+}
+.StemPopup{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style-type: center;
+    flex-direction: column;
+    list-style-type: none;
+
+    width: 500px;
+    height: 500px;
 }
 /* Html 2 */
 .Site-title p{

@@ -13,10 +13,13 @@
     </div>
     <div class="NavBar">
         <ul>
-            <a href="../html/index.html">Kanditater</a>
+            <a href="../html/index.html">Stem</a>
             <a href="../html/Hvordanstemme.html">Hvordan-Stemme</a>
             <a href="../html/Credits.html">Credits</a>
         </ul>
+    </div>
+    <div class="StemPopup">
+
     </div>
     <hr>
     <div class="Kanditater">
@@ -106,6 +109,9 @@
                     document.getElementById("Higlight-Line1").style.visibility = "unset";
                     document.getElementById("Higlight-Line2").style.visibility = "unset";
                 }
+                function OpenStemPage(){
+
+                }
                 //Event
                 function OnClick1Button(Klasse){
                     console.log(Klasse);
@@ -118,11 +124,13 @@
             <p class="Slagord" id="Slagord1"></p>
             <img src="" class="Kanditat-Img" id="Img1" alt="IMG_Kanditat">
             <p class="Kandidat-Desc" id="Bio1"></p>
+            <button onclick="OpenStemPage('')" type="button-stem">Stem</button>
             <hr id="Higlight-Line2">
             <p class="Kanditat-Navn" id="Navn2"></p>
             <p class="Slagord" id="Slagord2"></p>
             <img src="" class="Kanditat-Img" id="Img2" alt="IMG_Kanditat">
             <p class="Kandidat-Desc" id="Bio2"></p>
+            <button onclick="OpenStemPage('IMST')" type="button-stem">Stem</button>
         </ul>
     </div>
 </body>
