@@ -23,13 +23,76 @@
         <ul class="Kanditater-Content">
             <p class="Kanditater-Title">Klasse</p>
             <ul class="Klasse-knapper">
-                <button onclick="myFunction('2-IMIT')" type="button">2-IMIT</button>
-                <button onclick="myFunction('2-IMMP')" type="button">2-IMMP</button>
-                <button onclick="myFunction('2-IMST')" type="button">2-IMST</button>
+                <button onclick="OnClick1Button('IMIT')" type="button">2-IMIT</button>
+                <button onclick="OnClick1Button('IMMP')" type="button">2-IMMP</button>
+                <button onclick="OnClick1Button('IMST')" type="button">2-IMST</button>
             </ul>
             <script>
-                function myFunction(Klasse){
+                //Person Data
+                
+                let IMDATA = {
+                    IMIT : {
+                        2 : [
+                            'Jame', 
+                            'Epler er blå',
+                            'Image',
+                            'Bio'
+                        ],
+                        1 : [
+                            'Andreas', 
+                            'Epler er gul',
+                            'Image',
+                            'Bio'
+                        ],
+                    },
+                    IMMP : {
+                        1 : [
+                            'Jame', 
+                            'Epler er blå',
+                            'Image',
+                            'Bio'
+                        ],
+                        2 : [
+                            'Andreas', 
+                            'Epler er gul',
+                            'Image',
+                            'Bio'
+                        ],
+                    },
+                    IMST : {
+                        1 : [
+                            'Jame', 
+                            'Epler er blå',
+                            'Image',
+                            'Bio'
+                        ],
+                        2 : [
+                            'Andreas', 
+                            'Epler er gul',
+                            'Image',
+                            'Bio'
+                        ],
+                    },
+                };
+                //Event Procces
+                function DisplayInfo(Klasse){
+                    // Get Class Data
+                    let KlasseData = IMDATA[Klasse]
+                    console.log(KlasseData)
+
+                    let Kanditat1 = KlasseData[0]
+                    let Kanditat2 = KlasseData[1]
+
+                    console.log(Kanditat1)
+                    console.log(Kanditat2)
+
+                    //Set text to display data
+                    var cols = document.getElementsByClassName('col1');
+                }
+                //Event
+                function OnClick1Button(Klasse){
                     console.log(Klasse);
+                    DisplayInfo(Klasse)
                 };
             </script>
             <p class="Kanditater-Title">Kanditater</p>
