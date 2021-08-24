@@ -1,0 +1,122 @@
+*{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgb(255, 255, 255);
+}
+
+.TopTitle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: black;
+    font-size: 2rem;
+}
+.NavBar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+.NavBar ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    list-style-type: none;
+    padding: 0;
+}
+.NavBar ul a{
+    padding-left: 10px;
+    padding-right: 10px;
+
+    text-decoration: none;
+    color: grey;
+}
+.NavBar ul a:hover{
+    text-decoration: underline;
+}
+.Kanditater hr{
+    width: 100%;
+}
+.Klasse-Knapper{
+    display: flex;
+    align-items: center;
+    justify-content:center ;
+    flex-direction: column;
+    list-style-type: none;
+
+    padding: 0;
+    margin: 0;
+    padding-inline-start: 0;
+}
+.Kanditater-Title{
+    display: flex;
+    align-items: center;
+    justify-content:center ;
+
+    font-size: 2.5rem;
+}
+.Slagord{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.5rem;
+
+    color: gray;
+}
+.Kanditater{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Kanditat-Navn{
+    font-size: 2rem;
+}
+.Kanditater-Content{
+    display: flex;
+    align-items: center;
+    justify-content:center ;
+    flex-direction: column;
+    list-style-type: none;
+
+    padding: 0px;
+}
+.Kandidat-Desc{
+    display: flex;
+    align-items: center;
+    justify-content:center ;
+    flex-direction: column;
+    list-style-type: none;
+
+    color: gray;
+    width: 350px;
+}
+/* Html 2 */
+.Site-title p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 3.5rem;
+}
+.Para{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    font-size: 1.75rem;
+}
+.Tut-TextBox{
+    display: flex;
+    align-items: center;
+    justify-content:center ;
+    padding: 0;
+    width: 900px;
+}
+.Tutorial-Text ul{
+    display: flex;
+    align-items: center;
+    justify-content:center ;
+    flex-direction: column;
+    padding: 0;
+}
