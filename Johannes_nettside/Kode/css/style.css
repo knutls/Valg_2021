@@ -110,15 +110,13 @@ body{
     width: 350px;
 }
 .StemPopup{
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: center;
-    list-style-type: center;
-    flex-direction: column;
-    list-style-type: none;
+    background-color: royalblue;
 
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
 }
 /* Html 2 */
 .Site-title p{
