@@ -1,7 +1,9 @@
 from flask import Flask, request
 app = Flask(__name__)
-@app.route('/', methods=['POST'])
+@app.route('/vote', methods=['POST'])
 def result():
-    print(request.form['foo']) # should display 'bar'
+    print(request.form['fname']) # should display 'bar'
     return 'Received !' # response to your request.
 
+
+app.run(host="127.0.0.1", port=8080, debug=False)
