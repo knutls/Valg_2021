@@ -47,13 +47,13 @@
                     },
                     IMMP : {
                         1 : [
-                            'anders', 
+                            'Lars', 
                             'Epler er rød',
                             '../../Elementer/Bilder/Image.png',
                             'Bio'
                         ],
                         2 : [
-                            'Andreas', 
+                            'Sondre', 
                             'Epler er gul',
                             'Image',
                             'Bio'
@@ -61,13 +61,13 @@
                     },
                     IMST : {
                         1 : [
-                            'Jame', 
+                            'Simen', 
                             'Epler er blå',
                             'Image',
                             'Bio'
                         ],
                         2 : [
-                            'Andreas', 
+                            'Dino', 
                             'Epler er gul',
                             'Image',
                             'Bio'
@@ -91,6 +91,11 @@
                     document.getElementById('Slagord1').innerHTML = Kanditat1[1];
                     document.getElementById('Img1').src = Kanditat1[2];
                     document.getElementById('Bio1').innerHTML = Kanditat1[3];
+                    //Set text to display data 1
+                    document.getElementById('Navn2').innerHTML = Kanditat2[0];
+                    document.getElementById('Slagord2').innerHTML = Kanditat2[1];
+                    document.getElementById('Img2').src = Kanditat2[2];
+                    document.getElementById('Bio2').innerHTML = Kanditat2[3];
                 }
                 //Event
                 function OnClick1Button(Klasse){
@@ -98,31 +103,17 @@
                     DisplayInfo(Klasse)
                 };
             </script>
-            <p class="Kanditater-Title">Kanditater</p>
+            <p class="Kanditater-Title2">Kanditater</p>
             <hr>
-            <p class="Kanditat-Navn" id="Navn1" >kanditat-Jame</p>
-            <p class="Slagord" id="Slagord1">-daajad auhdu uasdiah.</p>
-            <img src="../../Elementer/Bilder/Image.png" id="Img1" alt="IMG_Kanditat">
-            <p class="Kandidat-Desc" id="Bio1">
-                id eum reque conclusionemque, 
-                vel cu dicta homero vidisse. Cu pri delicata suscipiantur, 
-                ridens nemore at pri. Vis cibo petentium ne, eu eripuit scripserit nec. 
-                Vis ea nonumy meliore dolorem, sed ne duis similique argumentum, eos sint luptatum postulant id. 
-                Eum autem postea vituperata at, id sea doc
-                tus appareat.
-            </p>
+            <p class="Kanditat-Navn" id="Navn1" ></p>
+            <p class="Slagord" id="Slagord1"></p>
+            <img src="" class="Kanditat-Img" id="Img1" alt="IMG_Kanditat">
+            <p class="Kandidat-Desc" id="Bio1"></p>
             <hr>
-            <p class="Kanditat-Navn" id="Navn1">kanditat-Jame</p>
-            <p class="Slagord" id="Slagord1">-daajad auhdu uasdiah.</p>
-            <img src="../../Elementer/Bilder/Image.png" id="Img1" alt="IMG_Kanditat">
-            <p class="Kandidat-Desc" id="Bio1">
-                id eum reque conclusionemque, 
-                vel cu dicta homero vidisse. Cu pri delicata suscipiantur, 
-                ridens nemore at pri. Vis cibo petentium ne, eu eripuit scripserit nec. 
-                Vis ea nonumy meliore dolorem, sed ne duis similique argumentum, eos sint luptatum postulant id. 
-                Eum autem postea vituperata at, id sea doc
-                tus appareat.
-            </p>
+            <p class="Kanditat-Navn" id="Navn2"></p>
+            <p class="Slagord" id="Slagord2"></p>
+            <img src="" class="Kanditat-Img" id="Img2" alt="IMG_Kanditat">
+            <p class="Kandidat-Desc" id="Bio2"></p>
         </ul>
     </div>
 </body>

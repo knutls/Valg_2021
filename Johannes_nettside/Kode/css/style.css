@@ -37,6 +37,7 @@
 }
 .Kanditater hr{
     width: 100%;
+    visibility: hidden;
 }
 .Klasse-knapper{
     display: flex;
@@ -55,6 +56,17 @@
     justify-content:center ;
 
     font-size: 2.5rem;
+}
+.Kanditater-Title2{
+    display: flex;
+    align-items: center;
+    justify-content:center ;
+
+    font-size: 2.5rem;
+    visibility: hidden;
+}
+.Kanditat-Img{
+    visibility: hidden;
 }
 .Slagord{
     display: flex;
