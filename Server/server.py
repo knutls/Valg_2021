@@ -41,7 +41,7 @@ def result():
     return str(is_token_available)
 
 @app.route("/home", methods=["GET"])
-def sendWebsite():
+def sendHome():
     src = os.path.join(root_dir(), "../Website/Kode/html/index.html")
     return Response(open(src).read(), mimetype="text/html")
 
