@@ -1,12 +1,11 @@
 from datetime import datetime
 import sqlite3
-from flask import Flask, request
+import os
+from flask import Flask, request, Response, send_from_directory
 app = Flask(__name__)
 
 
 DB_PATH = "DB/valg.db"
-
-
 
 class Data:
     def __init__(self, request) -> None:
@@ -18,6 +17,11 @@ class Data:
         self.vote = extract("vote")
         self.classname = extract("class")
         self.ts = datetime.utcnow()
+
+
+
+def root_dir():  # pragma: no cover
+    return os.path.abspath(os.path.dirname(__file__))
 
 
 @app.route("/vote", methods=["POST"])
@@ -36,9 +40,16 @@ def result():
 
     return str(is_token_available)
 
+@app.route("/home", methods=["GET"])
+def sendHome():
+    src = os.path.join(root_dir(), "../Website/Kode/html/index.html")
+    return Response(open(src).read(), mimetype="text/html")
+
+@app.route('/<path:path>')
+def sendWebsite(path):
+    return send_from_directory('../Website/Kode', path)
 
 #-----------------------------------------------------------------------------------------
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=8080, debug=False)
-
 
