@@ -42,7 +42,7 @@ def result():
 
 @app.route("/")
 def goHome():
-    redirect("http://stem-im.bakka.party:5000/home", code=302)
+    return redirect("http://stem-im.bakka.party:5000/home", code=302)
 
 @app.route("/home", methods=["GET"])
 def sendHome():
