@@ -5,7 +5,7 @@ from flask import Flask, request, Response, send_from_directory, redirect
 app = Flask(__name__)
 
 
-DB_PATH = "DB/valg.db"
+DB_PATH = "DB/data.db"
 
 class VoteData:
     def __init__(self, request) -> None:
@@ -81,12 +81,12 @@ def goHome():
 
 @app.route("/home", methods=["GET"])
 def sendHome():
-    src = os.path.join(root_dir(), "../Website/Kode/html/index.html")
+    src = os.path.join(root_dir(), "../Website/Code/HTML/index.html")
     return Response(open(src).read(), mimetype="text/html")
 
 @app.route('/<path:path>')
 def sendWebsite(path):
-    return send_from_directory('../Website/Kode/', path)
+    return send_from_directory('../Website/Code/', path)
 
 #-----------------------------------------------------------------------------------------
 if __name__ == "__main__":
