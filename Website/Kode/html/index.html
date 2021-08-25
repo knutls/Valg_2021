@@ -150,15 +150,16 @@
                 }
                 function SendData(Token, KandidatID){
                     var port = 8080
-                    var url1 = "http://127.0.0.1:"+ port +"/vote";
-                    var url2 = "http://176.58.106.91:"+ port +"/vote"
+                    var LocalURL = "http://127.0.0.1:"+ port +"/vote";
+                    var ServerURL = "http://176.58.106.91:"+ port +"/vote"
                     var formData = new FormData();
 
                     formData.append("token", Token);
                     formData.append("vote", KandidatID); // number 123456 is immediately converted to a string "123456"
 
                     var request = new XMLHttpRequest();
-                    request.open("POST", url1);
+                    request.open("POST", LocalURL);
+                    request.setRequestHeader("origin", "http://127.0.0.1")
                     console.log(formData)
                     request.send(formData);
                 }
