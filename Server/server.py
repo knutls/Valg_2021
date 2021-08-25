@@ -4,8 +4,9 @@ from flask import Flask, request
 app = Flask(__name__)
 
 
-conn = sqlite3.connect('valg.db')
-c = conn.cursor()
+
+
+
 
 
 class Data:
@@ -16,18 +17,22 @@ class Data:
         
         self.token = extract("token")
         self.vote = extract("vote")
+        self.classname = extract("class")
         self.ts = datetime.utcnow()
 
 
 @app.route('/vote', methods=['POST'])
 def result():
     data = Data(request)
-
-    print(c.execute(f"SELLECT COUNT(*) FROM voter WHERE token={data.token} AND token is_used=0"))
-
-    return "Submitted"
-
-#c.execute(f"SELLECT COUNT(*) FROM voter WHERE token={data.token} AND token is_used=0")
+    conn = sqlite3.connect('DB/valg.db')
+    c = conn.cursor()
+    
+    c.execute(f"SELECT COUNT(*) FROM voter WHERE token='{data.token}' AND token_used=0 AND vote_class='{data.classname}'")
+    is_token_available = bool(c.fetchone()[0])
+    if is_token_available == True:
+        c.execute(f"UPDATE voter SET token_used = 1 WHERE token='{data.token}'")
+    conn.commit()
+    return str(is_token_available)
 
 
 #-----------------------------------------------------------------------------------------

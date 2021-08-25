@@ -2,7 +2,7 @@ import sqlite3
 import json
 import os
 
-filepath = 'valg.db'
+filepath = 'DB/valg.db'
 
 if os.path.exists(filepath):
     os.remove(filepath)
@@ -10,7 +10,7 @@ if os.path.exists(filepath):
 else:
     print("Creating db file: %s" % filepath)
 
-conn = sqlite3.connect('valg.db')
+conn = sqlite3.connect('DB/valg.db')
 
 c = conn.cursor()
 
@@ -38,15 +38,14 @@ c.execute("""CREATE TABLE candidate (
 # c.execute("INSERT INTO voter VALUES ('eMGeB', 0, 0) ")
 
 
-
 #leser inn input data
-with open('koder_it.json', 'r') as f:
+with open('DB/Verification_Codes/koder_it.json', 'r') as f: 
     data_it = json.load(f)
 
-with open('koder_st.json', 'r') as f:
+with open('DB/Verification_Codes/koder_st.json', 'r') as f:
     data_st = json.load(f)
 
-with open('koder_mp.json', 'r') as f:
+with open('DB/Verification_Codes/koder_mp.json', 'r') as f:
     data_mp = json.load(f)
 
 
