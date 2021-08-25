@@ -149,8 +149,9 @@
                     ToggleMenu()
                 }
                 function SendData(Token, KandidatID){
-                    var url1 = "http://127.0.0.1:5000/vote";
-                    var url2 = "http://176.58.106.91:800/vote"
+                    var port = 8080
+                    var url1 = "http://127.0.0.1:"+ port +"/vote";
+                    var url2 = "http://176.58.106.91:"+ port +"/vote"
                     var formData = new FormData();
 
                     formData.append("token", Token);
