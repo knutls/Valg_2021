@@ -17,6 +17,7 @@ class Data:
         
         self.token = extract("token")
         self.vote = extract("vote")
+        self.classname = extract("class")
         self.ts = datetime.utcnow()
 
 
@@ -26,15 +27,12 @@ def result():
     conn = sqlite3.connect('DB/valg.db')
     c = conn.cursor()
     
-    c.execute(f"SELECT COUNT(*) FROM voter WHERE token='{data.token}' AND token_used=0")
+    c.execute(f"SELECT COUNT(*) FROM voter WHERE token='{data.token}' AND token_used=0 AND vote_class={data.classname}")
     is_token_available = bool(c.fetchone()[0])
     if is_token_available == True:
-        c.execute(f"UPDATE voter SET token_used = 1 WHERE token='{data.token}'"
-        )
+        c.execute(f"UPDATE voter SET token_used = 1 WHERE token='{data.token}'")
     conn.commit()
     return str(is_token_available)
-
-#c.execute(f"SELLECT COUNT(*) FROM voter WHERE token={data.token} AND token is_used=0")
 
 
 #-----------------------------------------------------------------------------------------
