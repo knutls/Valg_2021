@@ -1,6 +1,7 @@
 from datetime import datetime
 import sqlite3
 from flask import Flask, request
+from flask_cors import CORS
 app = Flask(__name__)
 
 
@@ -22,6 +23,7 @@ class Data:
 
 
 @app.route('/vote', methods=['POST'])
+@cross_origin()
 def result():
     data = Data(request)
     conn = sqlite3.connect('DB/valg.db')
@@ -36,5 +38,5 @@ def result():
 
 
 #-----------------------------------------------------------------------------------------
-
-app.run(host="127.0.0.1", port=8080, debug=False)
+if __name__ == "__main__":
+    app.run(host="127.0.0.1", port=8080, debug=False)
