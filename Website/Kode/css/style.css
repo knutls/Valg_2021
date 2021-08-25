@@ -136,7 +136,7 @@ body{
     align-items: center;
     justify-content: center;
 
-    width: 150px;
+    width: 182px;
     height: 50px;
 }
 .StemButton{
@@ -150,17 +150,17 @@ body{
 }
 .PopUpTitle{
     background-color: gray;
-    display: flex;
-
-
-    width: 50px;
-    height: 50px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    font-size: 2rem;
 }
 /* Html 2 */
 .Site-title p{
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     
     font-size: 3.5rem;
 }
@@ -174,8 +174,9 @@ body{
     display: flex;
     align-items: center;
     justify-content:center ;
+    font-size: 1.5rem;
     padding: 0;
-    width: 900px;
+    width: 70%;
 }
 .Tutorial-Text ul{
     display: flex;
@@ -183,4 +184,13 @@ body{
     justify-content:center ;
     flex-direction: column;
     padding: 0;
+}
+.Tut-Img{
+    width: 25%;
+    height: 25%;
+    border: 5px solid #555;
+}
+.LineTutorial{
+    color: black;
+    width: 100%;
 }
