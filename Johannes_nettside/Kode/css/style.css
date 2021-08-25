@@ -114,7 +114,7 @@ body{
 
     position: fixed;
     
-    display: block;
+    display: flex;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -122,6 +122,15 @@ body{
     width: 600px;
     height: 600px;
     visibility: hidden;
+    flex-direction: column;
+}
+.DropDownBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+    height: 50px;
 }
 .StemButton{
     position: fixed;
@@ -137,6 +146,10 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+
+    width: 50px;
+    height: 50px;
+    list-style-type: none;
 }
 /* Html 2 */
 .Site-title p{
