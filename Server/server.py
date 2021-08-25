@@ -31,9 +31,12 @@ def result():
     
     c.execute(f"SELECT COUNT(*) FROM voter WHERE token='{data.token}' AND token_used=0 AND vote_class='{data.classname}'")
     is_token_available = bool(c.fetchone()[0])
+    
     if is_token_available == True:
         c.execute(f"UPDATE voter SET token_used = 1 WHERE token='{data.token}'")
-    conn.commit()
+        c.execute(f"INSERT INTO votes VALUE ({data.token}, {data.ts}, {data.vote})")
+        conn.commit()
+    
     return str(is_token_available)
 
 
