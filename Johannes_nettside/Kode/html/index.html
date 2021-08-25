@@ -148,10 +148,24 @@
                 function OpenStemPage(){
                     ToggleMenu()
                 }
+                function SendData(Token, KandidatID){
+                    var url = "http://176.58.106.91:5000/vote";
+                    var formData = new FormData();
+
+                    formData.append("token", Token);
+                    formData.append("vote", KandidatID); // number 123456 is immediately converted to a string "123456"
+
+                    var request = new XMLHttpRequest();
+                    request.open("POST", url);
+                    request.send(formData);
+                }
                 function SumbitVote(){
                     let Kandidat = document.getElementById("KanditatDropBox").value;
                     let KandidatID = KanditatDictionairy[Kandidat]
                     let Token = document.getElementById("TokenInput").value;
+
+                    let Request = SendData(Token, KandidatID)
+
                     console.log("Sent request stem " + Kandidat + " ID " + KandidatID + " Token " + Token)
                 }
                 //Event

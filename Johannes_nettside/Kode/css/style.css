@@ -3,10 +3,12 @@
     background-color: rgba(255, 255, 255, 1);
 }
 body{
+    /*
     background-image: url(../../Elementer/Bilder/Elvebakken.jpeg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    */
 }
 .TopTitle{
     display: flex;
@@ -115,6 +117,8 @@ body{
     position: fixed;
     
     display: flex;
+    justify-content: center;
+    align-items: center;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -129,7 +133,7 @@ body{
     align-items: center;
     justify-content: center;
 
-    width: 50px;
+    width: 150px;
     height: 50px;
 }
 .StemButton{
@@ -144,12 +148,10 @@ body{
 .PopUpTitle{
     background-color: gray;
     display: flex;
-    align-items: center;
-    justify-content: center;
+
 
     width: 50px;
     height: 50px;
-    list-style-type: none;
 }
 /* Html 2 */
 .Site-title p{
