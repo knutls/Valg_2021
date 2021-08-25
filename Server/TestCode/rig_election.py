@@ -23,7 +23,7 @@ for voter in c.fetchall():
     for i in range(c.fetchone()[0]):
         if i+1 == WINNER:
             continue
-        elif votes.count(str(i+1)) >= votes.count(str(WINNER)):
+        elif votes.count(i+1) >= votes.count(WINNER):
             vote = WINNER
             break
 

@@ -24,7 +24,7 @@ c.execute("""CREATE TABLE voter (
 c.execute("""CREATE TABLE votes (
             token text,
             vote_time text,
-            candidate_id text
+            candidate_id int
             )""")
 
 c.execute("""CREATE TABLE candidate (
