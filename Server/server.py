@@ -47,7 +47,7 @@ def sendHome():
 
 @app.route('/<path:path>')
 def sendWebsite(path):
-    return send_from_directory('Website/Kode', path)
+    return send_from_directory('../Website/Kode', path)
 
 #-----------------------------------------------------------------------------------------
 if __name__ == "__main__":
