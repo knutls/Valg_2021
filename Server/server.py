@@ -1,13 +1,11 @@
 from datetime import datetime
 import sqlite3
 import os
-from flask import Flask, request, Response
+from flask import Flask, request, Response, send_from_directory
 app = Flask(__name__)
 
 
 DB_PATH = "DB/valg.db"
-
-
 
 class Data:
     def __init__(self, request) -> None:
@@ -43,14 +41,15 @@ def result():
     return str(is_token_available)
 
 @app.route("/home", methods=["GET"])
-def votePage():
+def sendWebsite():
     src = os.path.join(root_dir(), "../Website/Kode/html/index.html")
     return Response(open(src).read(), mimetype="text/html")
 
-
+@app.route('/<path:path>')
+def sendWebsite(path):
+    return send_from_directory('Website/Kode', path)
 
 #-----------------------------------------------------------------------------------------
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=8080, debug=False)
-
 
