@@ -1,6 +1,7 @@
 from datetime import datetime
 import sqlite3
-from flask import Flask, request
+import os
+from flask import Flask, request, Response
 app = Flask(__name__)
 
 
@@ -18,6 +19,11 @@ class Data:
         self.vote = extract("vote")
         self.classname = extract("class")
         self.ts = datetime.utcnow()
+
+
+
+def root_dir():  # pragma: no cover
+    return os.path.abspath(os.path.dirname(__file__))
 
 
 @app.route("/vote", methods=["POST"])
@@ -38,8 +44,9 @@ def result():
 
 @app.route("/home", methods=["GET"])
 def votePage():
-    content = get_file('../Website/Kode/html/index.html')
-    return Response(content, mimetype="text/html")
+    src = os.path.join(root_dir(), "../Website/Kode/html/index.html")
+    return Response(open(src).read(), mimetype="text/html")
+
 
 
 #-----------------------------------------------------------------------------------------
