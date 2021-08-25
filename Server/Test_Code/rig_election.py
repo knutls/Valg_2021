@@ -2,7 +2,7 @@ import sqlite3
 from datetime import datetime
 from random import randrange
 
-DB_PATH = "DB/valg.db"
+DB_PATH = "DB/data.db"
 WINNER = 2
 
 exec(open("DB/Init_DB.py").read())
