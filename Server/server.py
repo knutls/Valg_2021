@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 DB_PATH = "DB/valg.db"
 
-class Data:
+class VoteData:
     def __init__(self, request) -> None:
         self.request = request
         def extract(key):
@@ -18,14 +18,30 @@ class Data:
         self.classname = extract("class")
         self.ts = datetime.utcnow()
 
+class Candidate:
+    def __init__(self, from_tuple) -> None:
+        self.id, self.name, self.classname = from_tuple
+        self.votes = []
+    
+    def append(self, vote) -> None:
+        self.votes.append(vote)
 
+<<<<<<< HEAD
+=======
+
+class Vote:
+    def __init__(self, from_tuple) -> None:
+        self.token, self.ts, self.vote = from_tuple
+        self.vote = int(self.vote)
+
+>>>>>>> server
 def root_dir():  # pragma: no cover
     return os.path.abspath(os.path.dirname(__file__))
 
 
 @app.route("/vote", methods=["POST"])
-def result():
-    data = Data(request)
+def saveVote():
+    data = VoteData(request)
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
 
@@ -38,6 +54,29 @@ def result():
         conn.commit()
 
     return str(is_token_available)
+
+@app.route("/results", methods=["GET"])
+def sendResults():
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    
+    c.execute("SELECT * FROM candidate")
+    candidates = [Candidate(x) for x in c.fetchall()]
+    
+    c.execute("SELECT * FROM votes")
+    votes = [Vote(x) for x in c.fetchall()]
+    
+    for cand in candidates:
+        for vote in votes:
+            if vote.vote == cand.id:
+                cand.append(vote)
+
+    result = [x.__dict__ for x in candidates]
+    for x in result: x["votes"] = len(x["votes"])
+    return str(result)
+
+
+
 
 @app.route("/")
 def goHome():
@@ -54,5 +93,5 @@ def sendWebsite(path):
 
 #-----------------------------------------------------------------------------------------
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=8080, debug=False)
+    app.run(host="127.0.0.1", port=8080, debug=True)
 
