@@ -1,7 +1,7 @@
 from datetime import datetime
 import sqlite3
 import os
-from flask import Flask, request, Response, send_from_directory
+from flask import Flask, request, Response, send_from_directory, redirect
 app = Flask(__name__)
 
 
@@ -39,6 +39,10 @@ def result():
         conn.commit()
 
     return str(is_token_available)
+
+@app.route("/")
+def goHome():
+    redirect("http://stem-im.bakka.party:5000/home", code=302)
 
 @app.route("/home", methods=["GET"])
 def sendHome():
