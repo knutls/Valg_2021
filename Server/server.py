@@ -40,6 +40,17 @@ def result():
 
     return str(is_token_available)
 
+@app.route("/results")
+def sendResults():
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+
+    c.execute("SELECT COUNT(*) FROM votes GROUP BY candidate_id")
+    return str(c.fetchall())
+
+
+
+
 @app.route("/")
 def goHome():
     return redirect("http://stem-im.bakka.party:5000/home", code=302)
