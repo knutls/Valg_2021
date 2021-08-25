@@ -36,6 +36,11 @@ def result():
 
     return str(is_token_available)
 
+@app.route("/home", methods=["GET"])
+def votePage():
+    content = get_file('../Website/Kode/html/index.html')
+    return Response(content, mimetype="text/html")
+
 
 #-----------------------------------------------------------------------------------------
 if __name__ == "__main__":
