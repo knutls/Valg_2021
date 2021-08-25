@@ -25,9 +25,14 @@ def result():
     data = Data(request)
     conn = sqlite3.connect('DB/valg.db')
     c = conn.cursor()
-    print(c.execute(f"SELECT COUNT(*) FROM voter WHERE token='{data.token}' AND token_used=0"))
-
-    return "Submitted !"
+    
+    c.execute(f"SELECT COUNT(*) FROM voter WHERE token='{data.token}' AND token_used=0")
+    is_token_available = bool(c.fetchone()[0])
+    if is_token_available == True:
+        c.execute(f"UPDATE voter SET token_used = 1 WHERE token='{data.token}'"
+        )
+    conn.commit()
+    return str(is_token_available)
 
 #c.execute(f"SELLECT COUNT(*) FROM voter WHERE token={data.token} AND token is_used=0")
 
