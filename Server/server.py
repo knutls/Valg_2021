@@ -26,15 +26,12 @@ class Candidate:
     def append(self, vote) -> None:
         self.votes.append(vote)
 
-<<<<<<< HEAD
-=======
 
 class Vote:
     def __init__(self, from_tuple) -> None:
         self.token, self.ts, self.vote = from_tuple
         self.vote = int(self.vote)
 
->>>>>>> server
 def root_dir():  # pragma: no cover
     return os.path.abspath(os.path.dirname(__file__))
 
