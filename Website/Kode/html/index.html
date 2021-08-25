@@ -23,13 +23,17 @@
         <ul class="Kanditater-Content">
             <div class="StemPopup" id="PopUpbox">
                 <p class="PopUpTitle">Stem</p>
-                <select name="KanditatValg" id="KanditatDropBox">
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
+                <select class="DropDownBox" name="KanditatValg" id="KanditatDropBox">
+                    <option value="Jaime">Jaime</option>
+                    <option value="Andreas">Andreas</option>
+                    <option value="Lars">Lars</option>
+                    <option value="Sondre">Sondre</option>
+                    <option value="Simen">Simen</option>
+                    <option value="Dino">Dino</option>
                   </select>
-                <button class="StemButton" onclick="OnClick1Button2('')" type="button">X</button>
+                <input type="text" id="TokenInput" name="fname"><br><br>
+                <button onclick="OnClick1Button3()" type="button">Send-Stemme</button>
+                <button class="StemButton" onclick="OnClick1Button2('IMST')" type="button-stem">X</button>
             </div>
             <p class="Kanditater-Title">Klasse</p>
             <ul class="Klasse-knapper">
@@ -84,6 +88,21 @@
                         ],
                     },
                 };
+                let KanditatDictionairy = {
+                    1: "Jame",
+                    2: "Andreas",
+                    3: "Lars",
+                    4: "Sondre",
+                    5: "Simem",
+                    6: "Dino",
+
+                    "Jame": 1,
+                    "Andreas": 2,
+                    "Lars": 3,
+                    "Sondre": 4,
+                    "Simen": 5,
+                    "Dino": 6
+                };
                 //Event Procces
                 function DisplayInfo(Klasse){
                     // Get Class Data
@@ -129,6 +148,29 @@
                 function OpenStemPage(){
                     ToggleMenu()
                 }
+                function SendData(Token, KandidatID){
+                    var port = 8080
+                    var url1 = "http://127.0.0.1:"+ port +"/vote";
+                    var url2 = "http://176.58.106.91:"+ port +"/vote"
+                    var formData = new FormData();
+
+                    formData.append("token", Token);
+                    formData.append("vote", KandidatID); // number 123456 is immediately converted to a string "123456"
+
+                    var request = new XMLHttpRequest();
+                    request.open("POST", url1);
+                    console.log(formData)
+                    request.send(formData);
+                }
+                function SumbitVote(){
+                    let Kandidat = document.getElementById("KanditatDropBox").value;
+                    let KandidatID = KanditatDictionairy[Kandidat]
+                    let Token = document.getElementById("TokenInput").value;
+
+                    let Request = SendData(Token, KandidatID)
+
+                    console.log("Sent request stem " + Kandidat + " ID " + KandidatID + " Token " + Token)
+                }
                 //Event
                 function OnClick1Button(Klasse){
                     console.log(Klasse);
@@ -137,6 +179,9 @@
                 function OnClick1Button2(Klasse){
                     console.log(Klasse);
                     OpenStemPage(Klasse)
+                };
+                function OnClick1Button3(){
+                    SumbitVote()
                 };
             </script>
             <p class="Kanditater-Title2" id="Kanditat-Titel">Kanditater</p>
