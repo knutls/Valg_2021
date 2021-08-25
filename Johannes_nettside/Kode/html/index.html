@@ -21,8 +21,15 @@
     <hr>
     <div class="Kanditater">
         <ul class="Kanditater-Content">
-            <div class="StemPopup">
-
+            <div class="StemPopup" id="PopUpbox">
+                <p class="PopUpTitle">Stem</p>
+                <select name="KanditatValg" id="KanditatDropBox">
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="mercedes">Mercedes</option>
+                    <option value="audi">Audi</option>
+                  </select>
+                <button class="StemButton" onclick="OnClick1Button2('')" type="button">X</button>
             </div>
             <p class="Kanditater-Title">Klasse</p>
             <ul class="Klasse-knapper">
@@ -109,13 +116,27 @@
                     document.getElementById("Higlight-Line1").style.visibility = "unset";
                     document.getElementById("Higlight-Line2").style.visibility = "unset";
                 }
+                let menutoggle = false;
+                function ToggleMenu(){
+                    menutoggle = !menutoggle
+                    if (menutoggle == false){
+                        document.getElementById("PopUpbox").style.visibility = "hidden"
+                    }
+                    else {
+                        document.getElementById("PopUpbox").style.visibility = "unset"
+                    }
+                }
                 function OpenStemPage(){
-
+                    ToggleMenu()
                 }
                 //Event
                 function OnClick1Button(Klasse){
                     console.log(Klasse);
                     DisplayInfo(Klasse)
+                };
+                function OnClick1Button2(Klasse){
+                    console.log(Klasse);
+                    OpenStemPage(Klasse)
                 };
             </script>
             <p class="Kanditater-Title2" id="Kanditat-Titel">Kanditater</p>
@@ -124,13 +145,13 @@
             <p class="Slagord" id="Slagord1"></p>
             <img src="" class="Kanditat-Img" id="Img1" alt="IMG_Kanditat">
             <p class="Kandidat-Desc" id="Bio1"></p>
-            <button onclick="OpenStemPage('')" type="button-stem">Stem</button>
+            <button onclick="OnClick1Button2('')" type="button-stem">Stem</button>
             <hr id="Higlight-Line2">
             <p class="Kanditat-Navn" id="Navn2"></p>
             <p class="Slagord" id="Slagord2"></p>
             <img src="" class="Kanditat-Img" id="Img2" alt="IMG_Kanditat">
             <p class="Kandidat-Desc" id="Bio2"></p>
-            <button onclick="OpenStemPage('IMST')" type="button-stem">Stem</button>
+            <button onclick="OnClick1Button2('IMST')" type="button-stem">Stem</button>
         </ul>
     </div>
 </body>
