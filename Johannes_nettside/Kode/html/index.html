@@ -149,14 +149,16 @@
                     ToggleMenu()
                 }
                 function SendData(Token, KandidatID){
-                    var url = "http://127.0.0.1:5000/vote";
+                    var url1 = "http://127.0.0.1:5000/vote";
+                    var url2 = "http://176.58.106.91:800/vote"
                     var formData = new FormData();
 
                     formData.append("token", Token);
                     formData.append("vote", KandidatID); // number 123456 is immediately converted to a string "123456"
 
                     var request = new XMLHttpRequest();
-                    request.open("POST", url);
+                    request.open("POST", url1);
+                    console.log(formData)
                     request.send(formData);
                 }
                 function SumbitVote(){
