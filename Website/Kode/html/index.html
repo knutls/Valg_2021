@@ -34,6 +34,7 @@
                 <input type="text" id="TokenInput" name="fname"><br><br>
                 <button onclick="OnClick1Button3()" type="button">Send-Stemme</button>
                 <button class="StemButton" onclick="OnClick1Button2('IMST')" type="button-stem">X</button>
+                <p class="Response" id="ResponseText"></p>
             </div>
             <p class="Kanditater-Title">Klasse</p>
             <ul class="Klasse-knapper">
@@ -103,6 +104,20 @@
                     "Simen": 5,
                     "Dino": 6
                 };
+                let KlasseDictionairy = {
+                    "it": [
+                        "Jame",
+                        "Andreas"
+                    ],
+                    "mp": [
+                        "Lars",
+                        "Sondre"
+                    ],
+                    "st": [
+                        "Simen",
+                        "Dino"
+                    ]
+                }
                 //Event Procces
                 function DisplayInfo(Klasse){
                     // Get Class Data
@@ -148,18 +163,40 @@
                 function OpenStemPage(){
                     ToggleMenu()
                 }
-                function SendData(Token, KandidatID){
-                    var port = 8080
-                    var LocalURL = "http://127.0.0.1:"+ port +"/vote";
-                    var ServerURL = "http://176.58.106.91:"+ port +"/vote"
+                function GetClass(Name){
+                    for (const [key, value] of Object.entries(KlasseDictionairy)) {
+                        for (const [_, value1] of Object.entries(value)) {
+                            if (value1 == Name){
+                                return key
+                            }
+                        }
+                    }
+                    return "None"
+                }
+                function SendData(Token, KandidatID, Klasse){
                     var formData = new FormData();
 
                     formData.append("token", Token);
-                    formData.append("vote", KandidatID); // number 123456 is immediately converted to a string "123456"
+                    formData.append("vote", KandidatID);
+                    formData.append("class", Klasse);
 
                     var request = new XMLHttpRequest();
-                    request.open("POST", LocalURL);
-                    request.setRequestHeader("origin", "http://127.0.0.1")
+                    // create event for request return
+                    request.onreadystatechange = function(){
+                        if (request.readyState == XMLHttpRequest.DONE){
+                            let ResponseText = ""
+                            if (request.responseText == true){
+                                ResponseText = "Stemme er sendt!"
+                            }
+                            else{
+                                responseText = "Noe gikk galt " + request.responseText
+                            }
+                            document.getElementById('ResponseText').innerHTML = responseText;
+                            console.log(request.responseText)
+                        }
+                    }
+
+                    request.open("POST", "vote");
                     console.log(formData)
                     request.send(formData);
                 }
@@ -167,10 +204,13 @@
                     let Kandidat = document.getElementById("KanditatDropBox").value;
                     let KandidatID = KanditatDictionairy[Kandidat]
                     let Token = document.getElementById("TokenInput").value;
+                    let Klasse = GetClass(Kandidat)
+                    console.log(Klasse, Kandidat)
 
-                    let Request = SendData(Token, KandidatID)
 
-                    console.log("Sent request stem " + Kandidat + " ID " + KandidatID + " Token " + Token)
+                    let Request = SendData(Token, KandidatID, Klasse)
+
+                    console.log("Sent request stem " + Kandidat + " " + Klasse + " ID " + KandidatID + " Token " + Token)
                 }
                 //Event
                 function OnClick1Button(Klasse){
