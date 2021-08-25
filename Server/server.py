@@ -31,7 +31,7 @@ def result():
 
     if is_token_available == True:
         c.execute(f"UPDATE voter SET token_used = 1 WHERE token='{data.token}'")
-        c.execute(f"INSERT INTO votes VALUE ({data.token}, {data.ts}, {data.vote})")
+        c.execute(f"INSERT INTO votes VALUES ('{data.token}', '{str(data.ts)}', '{data.vote}')")
         conn.commit()
 
     return str(is_token_available)
