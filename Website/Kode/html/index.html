@@ -147,6 +147,8 @@
                     document.getElementById("Navn2").style.visibility = "unset";
                     document.getElementById("Img1").style.visibility = "unset";
                     document.getElementById("Img2").style.visibility = "unset";
+                    document.getElementById("ButtonStemm1").style.visibility = "unset";
+                    document.getElementById("ButtonStemm2").style.visibility = "unset";
                     document.getElementById("Higlight-Line1").style.visibility = "unset";
                     document.getElementById("Higlight-Line2").style.visibility = "unset";
                 }
@@ -184,15 +186,14 @@
                     // create event for request return
                     request.onreadystatechange = function(){
                         if (request.readyState == XMLHttpRequest.DONE){
-                            let ResponseText = ""
+                            let ResponseMessage = ""
                             if (request.responseText == true){
-                                ResponseText = "Stemme er sendt!"
+                                ResponseMessage = "Stemme er sendt!"
                             }
                             else{
-                                responseText = "Noe gikk galt " + request.responseText
+                                ResponseMessage = "Noe gikk galt " + request.responseText
                             }
-                            document.getElementById('ResponseText').innerHTML = responseText;
-                            console.log(request.responseText)
+                            document.getElementById('ResponseText').innerHTML = ResponseMessage;
                         }
                     }
 
@@ -231,13 +232,13 @@
             <p class="Slagord" id="Slagord1"></p>
             <img src="" class="Kanditat-Img" id="Img1" alt="IMG_Kanditat">
             <p class="Kandidat-Desc" id="Bio1"></p>
-            <button onclick="OnClick1Button2('')" type="button-stem">Stem</button>
+            <button class="ButtonStemm" id="ButtonStemm1" onclick="OnClick1Button2('')" type="button-stem">Stem</button>
             <hr id="Higlight-Line2">
             <p class="Kanditat-Navn" id="Navn2"></p>
             <p class="Slagord" id="Slagord2"></p>
             <img src="" class="Kanditat-Img" id="Img2" alt="IMG_Kanditat">
             <p class="Kandidat-Desc" id="Bio2"></p>
-            <button onclick="OnClick1Button2('IMST')" type="button-stem">Stem</button>
+            <button class="ButtonStemm" id="ButtonStemm2" onclick="OnClick1Button2('IMST')" type="button-stem">Stem</button>
         </ul>
     </div>
 </body>
