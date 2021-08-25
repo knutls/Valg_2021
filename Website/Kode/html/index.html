@@ -34,6 +34,7 @@
                 <input type="text" id="TokenInput" name="fname"><br><br>
                 <button onclick="OnClick1Button3()" type="button">Send-Stemme</button>
                 <button class="StemButton" onclick="OnClick1Button2('IMST')" type="button-stem">X</button>
+                <p class="Response" id="ResponseText"></p>
             </div>
             <p class="Kanditater-Title">Klasse</p>
             <ul class="Klasse-knapper">
@@ -47,7 +48,7 @@
                 let IMDATA = {
                     IMIT : {
                         1 : [
-                            'Jame', 
+                            'Jaime', 
                             '-Epler er blå',
                             'Image',
                             'fdsdsfs'
@@ -89,20 +90,34 @@
                     },
                 };
                 let KanditatDictionairy = {
-                    1: "Jame",
+                    1: "Jaime",
                     2: "Andreas",
                     3: "Lars",
                     4: "Sondre",
                     5: "Simem",
                     6: "Dino",
 
-                    "Jame": 1,
+                    "Jaime": 1,
                     "Andreas": 2,
                     "Lars": 3,
                     "Sondre": 4,
                     "Simen": 5,
                     "Dino": 6
                 };
+                let KlasseDictionairy = {
+                    "it": [
+                        "Jaime",
+                        "Andreas"
+                    ],
+                    "mp": [
+                        "Lars",
+                        "Sondre"
+                    ],
+                    "st": [
+                        "Simen",
+                        "Dino"
+                    ]
+                }
                 //Event Procces
                 function DisplayInfo(Klasse){
                     // Get Class Data
@@ -132,6 +147,8 @@
                     document.getElementById("Navn2").style.visibility = "unset";
                     document.getElementById("Img1").style.visibility = "unset";
                     document.getElementById("Img2").style.visibility = "unset";
+                    document.getElementById("ButtonStemm1").style.visibility = "unset";
+                    document.getElementById("ButtonStemm2").style.visibility = "unset";
                     document.getElementById("Higlight-Line1").style.visibility = "unset";
                     document.getElementById("Higlight-Line2").style.visibility = "unset";
                 }
@@ -148,17 +165,39 @@
                 function OpenStemPage(){
                     ToggleMenu()
                 }
-                function SendData(Token, KandidatID){
-                    var port = 8080
-                    var url1 = "http://127.0.0.1:"+ port +"/vote";
-                    var url2 = "http://176.58.106.91:"+ port +"/vote"
+                function GetClass(Name){
+                    for (const [key, value] of Object.entries(KlasseDictionairy)) {
+                        for (const [_, value1] of Object.entries(value)) {
+                            if (value1 == Name){
+                                return key
+                            }
+                        }
+                    }
+                    return "None"
+                }
+                function SendData(Token, KandidatID, Klasse){
                     var formData = new FormData();
 
                     formData.append("token", Token);
-                    formData.append("vote", KandidatID); // number 123456 is immediately converted to a string "123456"
+                    formData.append("vote", KandidatID);
+                    formData.append("class", Klasse);
 
                     var request = new XMLHttpRequest();
-                    request.open("POST", url1);
+                    // create event for request return
+                    request.onreadystatechange = function(){
+                        if (request.readyState == XMLHttpRequest.DONE){
+                            let ResponseMessage = ""
+                            if (request.responseText == true){
+                                ResponseMessage = "Stemme er sendt!"
+                            }
+                            else{
+                                ResponseMessage = "Noe gikk galt " + request.responseText
+                            }
+                            document.getElementById('ResponseText').innerHTML = ResponseMessage;
+                        }
+                    }
+
+                    request.open("POST", "vote");
                     console.log(formData)
                     request.send(formData);
                 }
@@ -166,10 +205,13 @@
                     let Kandidat = document.getElementById("KanditatDropBox").value;
                     let KandidatID = KanditatDictionairy[Kandidat]
                     let Token = document.getElementById("TokenInput").value;
+                    let Klasse = GetClass(Kandidat)
+                    console.log(Klasse, Kandidat)
 
-                    let Request = SendData(Token, KandidatID)
 
-                    console.log("Sent request stem " + Kandidat + " ID " + KandidatID + " Token " + Token)
+                    let Request = SendData(Token, KandidatID, Klasse)
+
+                    console.log("Sent request stem " + Kandidat + " " + Klasse + " ID " + KandidatID + " Token " + Token)
                 }
                 //Event
                 function OnClick1Button(Klasse){
@@ -190,13 +232,13 @@
             <p class="Slagord" id="Slagord1"></p>
             <img src="" class="Kanditat-Img" id="Img1" alt="IMG_Kanditat">
             <p class="Kandidat-Desc" id="Bio1"></p>
-            <button onclick="OnClick1Button2('')" type="button-stem">Stem</button>
+            <button class="ButtonStemm" id="ButtonStemm1" onclick="OnClick1Button2('')" type="button-stem">Stem</button>
             <hr id="Higlight-Line2">
             <p class="Kanditat-Navn" id="Navn2"></p>
             <p class="Slagord" id="Slagord2"></p>
             <img src="" class="Kanditat-Img" id="Img2" alt="IMG_Kanditat">
             <p class="Kandidat-Desc" id="Bio2"></p>
-            <button onclick="OnClick1Button2('IMST')" type="button-stem">Stem</button>
+            <button class="ButtonStemm" id="ButtonStemm2" onclick="OnClick1Button2('IMST')" type="button-stem">Stem</button>
         </ul>
     </div>
 </body>

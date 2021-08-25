@@ -19,7 +19,6 @@ class Data:
         self.ts = datetime.utcnow()
 
 
-
 def root_dir():  # pragma: no cover
     return os.path.abspath(os.path.dirname(__file__))
 
