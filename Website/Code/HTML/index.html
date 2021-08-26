@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Valg</title>
 </head>
+
 <body>
     <div class="TopTitle">
-        <p>Elev valg 2021</p>
+        <a style="text-decoration: none; color: black;" href="../html/index.html">Elev valg 2021</a>
     </div>
     <div class="NavBar">
         <ul>
-            <a href="../HTML/index.html">Stem</a>
-            <a href="../HTML/Hvordanstemme.html">Hvordan-Stemme</a>
-            <a href="../HTML/Credits.html">Credits</a>
+            <a href="../html/index.html">Stem</a>
+            <a href="../html/Hvordanstemme.html">Hvordan-Stemme</a>
+            <a href="../html/Credits.html">Credits</a>
         </ul>
     </div>
     <hr>
@@ -30,8 +32,8 @@
                     <option value="Sondre">Sondre</option>
                     <option value="Simen">Simen</option>
                     <option value="Dino">Dino</option>
-                  </select>
-                <input type="text" id="TokenInput" name="fname"><br><br>
+                </select>
+                <input type="text" id="TokenInput" name="fname" placeholder="Skriv In Kode"><br><br>
                 <button onclick="OnClick1Button3()" type="button">Send-Stemme</button>
                 <button class="StemButton" onclick="OnClick1Button2('IMST')" type="button-stem">X</button>
                 <p class="Response" id="ResponseText"></p>
@@ -44,46 +46,46 @@
             </ul>
             <script>
                 //Person Data
-                
+
                 let IMDATA = {
-                    IMIT : {
-                        1 : [
-                            'Jaime', 
-                            '-Epler er blå',
-                            'Image',
+                    IMIT: {
+                        1: [
+                            'Jaime',
+                            '-Et skritt om gangen',
+                            '../../Elementer/Bilder/Hawt.JPG',
                             'fdsdsfs'
                         ],
-                        2 : [
-                            'Andreas', 
-                            'Epler er gul',
-                            'Image',
+                        2: [
+                            'Andreas',
+                            '-En enklere skoledag',
+                            '../../Elementer/Bilder/WOOOOOO.PNG',
                             'sdassadds'
                         ],
                     },
-                    IMMP : {
-                        1 : [
-                            'Lars', 
-                            'Epler er rød',
-                            '../../Elementer/Bilder/Image.png',
+                    IMMP: {
+                        1: [
+                            'Lars',
+                            '-Kan det fikses? Klart det kan!',
+                            '../../Elementer/Bilder/SHEEIS.PNG',
                             'Bio'
                         ],
-                        2 : [
-                            'Sondre', 
+                        2: [
+                            'Sondre',
                             'Epler er gul',
-                            'Image',
+                            '../../Elementer/Bilder/SHEEEEEIS.JPG',
                             'Bio'
                         ],
                     },
-                    IMST : {
-                        1 : [
-                            'Simen', 
-                            'Epler er blå',
+                    IMST: {
+                        1: [
+                            'Simen',
+                            '-En stemme for Simen er en stemme for en bedre verden',
                             'Image',
                             'Bio'
                         ],
-                        2 : [
-                            'Dino', 
-                            'Epler er gul',
+                        2: [
+                            'Dino',
+                            '-Fremtiden er lys, fremtiden er im',
                             'Image',
                             'Bio'
                         ],
@@ -119,7 +121,7 @@
                     ]
                 }
                 //Event Procces
-                function DisplayInfo(Klasse){
+                function DisplayInfo(Klasse) {
                     // Get Class Data
                     let KlasseData = IMDATA[Klasse]
                     console.log(KlasseData)
@@ -129,8 +131,8 @@
 
                     console.log(Kanditat1)
                     console.log(Kanditat2)
-                    
-                    
+
+
                     //Set text to display data 1
                     document.getElementById('Navn1').innerHTML = Kanditat1[0];
                     document.getElementById('Slagord1').innerHTML = Kanditat1[1];
@@ -153,29 +155,42 @@
                     document.getElementById("Higlight-Line2").style.visibility = "unset";
                 }
                 let menutoggle = false;
-                function ToggleMenu(){
+                function ToggleMenu() {
                     menutoggle = !menutoggle
-                    if (menutoggle == false){
+                    if (menutoggle == false) {
                         document.getElementById("PopUpbox").style.visibility = "hidden"
                     }
                     else {
                         document.getElementById("PopUpbox").style.visibility = "unset"
                     }
                 }
-                function OpenStemPage(){
+                function OpenStemPage(ButtonPressed) {
+                    //Set DropdownBox candidate clicked
+                    if (menutoggle == false) {
+                        let Navn = ""
+                        if (ButtonPressed == "Button1") {
+                            Navn = document.getElementById('Navn1').innerHTML
+                        }
+                        else {
+                            Navn = document.getElementById('Navn2').innerHTML
+                        }
+                        document.getElementById("KanditatDropBox").value = Navn
+                        console.log(Navn)
+                    }
+                    //Open Menu
                     ToggleMenu()
                 }
-                function GetClass(Name){
+                function GetClass(Name) {
                     for (const [key, value] of Object.entries(KlasseDictionairy)) {
                         for (const [_, value1] of Object.entries(value)) {
-                            if (value1 == Name){
+                            if (value1 == Name) {
                                 return key
                             }
                         }
                     }
                     return "None"
                 }
-                function SendData(Token, KandidatID, Klasse){
+                function SendData(Token, KandidatID, Klasse) {
                     var formData = new FormData();
 
                     formData.append("token", Token);
@@ -184,10 +199,10 @@
 
                     var request = new XMLHttpRequest();
                     // create event for request return
-                    request.onreadystatechange = function(){
-                        if (request.readyState == XMLHttpRequest.DONE){
+                    request.onreadystatechange = function () {
+                        if (request.readyState == XMLHttpRequest.DONE) {
                             let ResponseMessage = ""
-                            if (request.responseText == true){
+                            if (request.responseText == true) {
                                 ResponseMessage = "Stemme er sendt!"
                             }
                             else if (request.responseText == False){
@@ -205,7 +220,7 @@
                     console.log(formData)
                     request.send(formData);
                 }
-                function SumbitVote(){
+                function SumbitVote() {
                     let Kandidat = document.getElementById("KanditatDropBox").value;
                     let KandidatID = KanditatDictionairy[Kandidat]
                     let Token = document.getElementById("TokenInput").value;
@@ -218,32 +233,35 @@
                     console.log("Sent request stem " + Kandidat + " " + Klasse + " ID " + KandidatID + " Token " + Token)
                 }
                 //Event
-                function OnClick1Button(Klasse){
+                function OnClick1Button(Klasse) {
                     console.log(Klasse);
                     DisplayInfo(Klasse)
                 };
-                function OnClick1Button2(Klasse){
-                    console.log(Klasse);
-                    OpenStemPage(Klasse)
+                function OnClick1Button2(ButtonPressed) {
+                    console.log(ButtonPressed);
+                    OpenStemPage(ButtonPressed)
                 };
-                function OnClick1Button3(){
+                function OnClick1Button3() {
                     SumbitVote()
                 };
             </script>
             <p class="Kanditater-Title2" id="Kanditat-Titel">Kanditater</p>
             <hr id="Higlight-Line1">
-            <p class="Kanditat-Navn" id="Navn1" ></p>
+            <p class="Kanditat-Navn" id="Navn1"></p>
             <p class="Slagord" id="Slagord1"></p>
-            <img src="" class="Kanditat-Img" id="Img1" alt="IMG_Kanditat">
+            <img src="" class="Kanditat-Img" id="Img1" alt="IMG_Kanditat" width="393px" height="590px">
             <p class="Kandidat-Desc" id="Bio1"></p>
-            <button class="ButtonStemm" id="ButtonStemm1" onclick="OnClick1Button2('')" type="button-stem">Stem</button>
+            <button class="ButtonStemm" id="ButtonStemm1" onclick="OnClick1Button2('Button1')"
+                type="button-stem">Stem</button>
             <hr id="Higlight-Line2">
             <p class="Kanditat-Navn" id="Navn2"></p>
             <p class="Slagord" id="Slagord2"></p>
-            <img src="" class="Kanditat-Img" id="Img2" alt="IMG_Kanditat">
-            <p class="Kandidat-Desc" id="Bio2"></p>
-            <button class="ButtonStemm" id="ButtonStemm2" onclick="OnClick1Button2('IMST')" type="button-stem">Stem</button>
+            <img src="" class="Kanditat-Img" id="Img2" alt="IMG_Kanditat" width="393px" height="590px">
+            <p class=" Kandidat-Desc" id="Bio2"></p>
+            <button class="ButtonStemm" id="ButtonStemm2" onclick="OnClick1Button2('Button2')"
+                type="button-stem">Stem</button>
         </ul>
     </div>
 </body>
+
 </html>
