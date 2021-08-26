@@ -83,8 +83,8 @@ def sendHome():
     return Response(open(src).read(), mimetype="text/html")
 
 @app.route('/<path:path>')
-def sendWebsite(path):
-    return send_from_directory('../Website/Code/', path)
+def sendFile(path):
+    return send_from_directory('../Website/', path)
 
 #-----------------------------------------------------------------------------------------
 if __name__ == "__main__":
