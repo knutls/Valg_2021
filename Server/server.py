@@ -18,23 +18,26 @@ class VoteData:
         self.classname = extract("class")
         self.ts = datetime.utcnow()
 
+
+# Not used
+class Vote:
+    def __init__(self, from_tuple) -> None:
+        self.token, self.ts, self.vote = from_tuple
+
+
 class Candidate:
     def __init__(self, from_tuple) -> None:
         self.id, self.name, self.classname = from_tuple
-        self.votes = []
         
         # Get votes from DB
         conn = sqlite3.connect(DB_PATH)
         c = conn.cursor()
-        c.execute(f"SELECT * FROM votes WHERE cand_id={}")
+        c.execute(f"SELECT * FROM votes WHERE cand_id={self.id}")
+        self.votes = len(c.fetchall())
     
-    def append(self, vote) -> None:
-        self.votes.append(vote)
 
 
-class Vote:
-    def __init__(self, from_tuple) -> None:
-        self.token, self.ts, self.vote = from_tuple
+
 
 def root_dir():  # pragma: no cover
     return os.path.abspath(os.path.dirname(__file__))
@@ -63,17 +66,8 @@ def sendResults():
     
     c.execute("SELECT * FROM candidate")
     candidates = [Candidate(x) for x in c.fetchall()]
-    
-    c.execute("SELECT * FROM votes")
-    votes = [Vote(x) for x in c.fetchall()]
-    
-    for cand in candidates:
-        for vote in votes:
-            if vote.vote == cand.id:
-                cand.append(vote)
 
     result = [x.__dict__ for x in candidates]
-    for x in result: x["votes"] = len(x["votes"])
     return str(result)
 
 
