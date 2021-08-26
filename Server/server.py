@@ -6,6 +6,11 @@ app = Flask(__name__)
 
 
 DB_PATH = "DB/data.db"
+ROOT = "Valg_2021"
+
+# Change working directory to ROOT
+while os.path.basename(os.getcwd()) not in (ROOT, ""): os.chdir("..")
+
 
 class VoteData:
     def __init__(self, request) -> None:
@@ -79,12 +84,12 @@ def goHome():
 
 @app.route("/home", methods=["GET"])
 def sendHome():
-    src = os.path.join(root_dir(), "../Website/Code/HTML/index.html")
+    src = os.path.join(root_dir(), "Website/Code/HTML/index.html")
     return Response(open(src).read(), mimetype="text/html")
 
 @app.route('/<path:path>')
 def sendFile(path):
-    return send_from_directory('../Website/', path)
+    return send_from_directory('Website/', path)
 
 #-----------------------------------------------------------------------------------------
 if __name__ == "__main__":
