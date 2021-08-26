@@ -22,6 +22,11 @@ class Candidate:
     def __init__(self, from_tuple) -> None:
         self.id, self.name, self.classname = from_tuple
         self.votes = []
+        
+        # Get votes from DB
+        conn = sqlite3.connect(DB_PATH)
+        c = conn.cursor()
+        c.execute(f"SELECT * FROM votes WHERE cand_id={}")
     
     def append(self, vote) -> None:
         self.votes.append(vote)
@@ -30,7 +35,6 @@ class Candidate:
 class Vote:
     def __init__(self, from_tuple) -> None:
         self.token, self.ts, self.vote = from_tuple
-        self.vote = int(self.vote)
 
 def root_dir():  # pragma: no cover
     return os.path.abspath(os.path.dirname(__file__))
@@ -42,7 +46,7 @@ def saveVote():
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
 
-    c.execute(f"SELECT COUNT(*) FROM voter WHERE token='{data.token}' AND token_used=0 AND vote_class='{data.classname}'")
+    c.execute(f"SELECT COUNT(*) FROM voter WHERE token='{data.token}' AND token_used=0 AND classname='{data.classname}'")
     is_token_available = bool(c.fetchone()[0])
 
     if is_token_available == True:

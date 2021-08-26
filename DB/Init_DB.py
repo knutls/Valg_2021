@@ -18,19 +18,19 @@ c.execute("""CREATE TABLE voter (
             token text,
             token_used int,
             is_admin int,
-            vote_class text
+            classname text
             )""")
 
 c.execute("""CREATE TABLE votes (
             token text,
-            vote_time text,
-            candidate_id int
+            ts text,
+            cand_id int
             )""")
 
 c.execute("""CREATE TABLE candidate (
             cand_id int,
             cand_name text,
-            vote_class text
+            classname text
             )""")
 
 
