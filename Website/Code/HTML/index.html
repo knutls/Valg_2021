@@ -190,10 +190,14 @@
                             if (request.responseText == true){
                                 ResponseMessage = "Stemme er sendt!"
                             }
-                            else{
-                                ResponseMessage = "Noe gikk galt " + request.responseText
+                            else if (request.responseText == False){
+                                ResponseMessage = "Noe gikk galt. Problemer kan være at du skrev koden feil, koden er allerede brukt, eller at du brukte koden med feil klasse" + request.responseText
                             }
-                            document.getElementById('ResponseText').innerHTML = ResponseMessage;
+                            else {
+                                ResponseMessage = "Server error. Kontakt"
+                            }
+                            //document.getElementById('ResponseText').innerHTML = ResponseMessage;
+                            alert(ResponseMessage);
                         }
                     }
 
