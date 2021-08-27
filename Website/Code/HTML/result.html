@@ -36,7 +36,7 @@
         </div>
 
  </div>
- <script>
+<script>
 
 
 var HttpClient = function() {
@@ -52,16 +52,17 @@ var HttpClient = function() {
     }
 }
 
- var client = new HttpClient();
- client.get("http://stem-im.bakka.party:5000/results", function(response) {
-     var info = JSON.stringify(response);
-     var json = JSON.parse(info);
- 
-     for(var i = 0; i < json.length; i++) {
-         var candidate = json[i];
-         document.getElementById("votes"+candidate.id).innerHTML = String(candidate.votes);
-     }
- });
- </script>
+var client = new HttpClient();
+client.get("http://stem-im.bakka.party:5000/results", function(response) {
+    var info = JSON.stringify(response);
+    var json = JSON.parse(info);
+
+    for(var i = 0; i < json.length; i++) {
+        var candidate = json[i];
+        console.log("votes"+candidate.id);
+        document.getElementById("votes"+candidate.id).innerHTML = String(candidate.votes);
+    }
+});
+</script>
 </body>
 </html>
