@@ -25,11 +25,12 @@ var HttpClient = function() {
 var client = new HttpClient();
 client.get('http://stem-im.bakka.party:5000/results', function(response) {
     console.log(response);
+    const obj = JSON.parse(response);
     var info = JSON.stringify(response);
     //var info =response
     //var info = response.response
     console.log(info);
-
+    console.log(obj)
 });
 
 function It() {
