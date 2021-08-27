@@ -59,7 +59,7 @@ var HttpClient = function() {
  
      for(var i = 0; i < json.length; i++) {
          var candidate = json[i];
-         getElementById("votes"+candidate.id).innerHTML = candidate.votes;
+         document.getElementById("votes"+candidate.id).innerHTML = candidate.votes;
      }
  });
  
