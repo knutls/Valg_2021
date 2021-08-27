@@ -205,13 +205,14 @@
                             if (request.responseText == true) {
                                 ResponseMessage = "Stemme er sendt!"
                             }
-                            else if (request.responseText == False){
+                            else if (request.responseText == false){
                                 ResponseMessage = "Noe gikk galt. Problemer kan være at du skrev koden feil, koden er allerede brukt, eller at du brukte koden med feil klasse" + request.responseText
                             }
                             else {
                                 ResponseMessage = "Server error. Kontakt it"
                             }
                             document.getElementById('ResponseText').innerHTML = ResponseMessage;
+                            console.log(ResponseMessage)
                             alert(ResponseMessage);
                         }
                     }
