@@ -2,14 +2,14 @@ body{
   background-color: rgb(255, 255, 255);
 }
 
-/*
+
 .it{
     margin: 0 auto;
     margin: 2em;
     
     width: 80px;
     height: 80px;
-    background: skyblue;
+    background: rgb(0, 183, 255);
 }
 .mp{
     margin: 0 auto;
@@ -17,7 +17,7 @@ body{
 
     width: 80px;
     height: 80px;
-    background: red;
+    background: rgb(0, 140, 255);
 
 }
 .st{
@@ -26,11 +26,11 @@ body{
 
     width: 80px;
     height: 80px;
-    background: orange
+    background: rgb(0, 110, 255)
 
 
  }
- */
+ 
 
  #header{
     font-family: Arial, Helvetica, sans-serif;
