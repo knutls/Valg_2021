@@ -24,7 +24,7 @@
         </div>
         <div class="it">
             <div class="klasse"><H1>Sondre:</H1></div>
-            <div class="info" id="vote3"></div>
+            <div class="info" id="votes3"></div>
         </div>
         <div class="mp">
             <div class="klasse"><H1>Simen:</H1></div>
@@ -61,7 +61,7 @@ client.get("http://stem-im.bakka.party:5000/results", function(response) {
         var candidate = json[i];
         console.log(candidate)
         console.log("votes"+candidate["id"]);
-        document.getElementById("votes"+candidate.id).innerHTML = String(candidate["votes"]);
+        document.getElementById("votes"+candidate.id).innerHTML = candidate.votes;
     }
 });
 </script>
