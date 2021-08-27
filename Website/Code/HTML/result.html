@@ -24,13 +24,13 @@ var HttpClient = function() {
 // henter info
 var client = new HttpClient();
 client.get("http://stem-im.bakka.party:5000/results", function(response) {
-    console.log(response)
-    var info = JSON.stringify(response)
-    const obj = JSON.parse(info)
-    //var info =response
-    //var info = response.response
-    console.log(info)
-    console.log(obj)
+    var info = JSON.stringify(response);
+    var json = JSON.parse(info);
+
+    for(var i = 0; i < json.length; i++) {
+        var candidate = json[i];
+        getElementById("name"+candidate.id).innerHTML = candidate.votes;
+    }
 });
 
 function It() {

@@ -1,8 +1,10 @@
 from datetime import datetime
 import sqlite3
 import os
+import json
 from flask import Flask, request, Response, send_from_directory, redirect
 app = Flask(__name__)
+
 
 
 DB_PATH = "DB/data.db"
@@ -77,7 +79,7 @@ def sendResults():
     candidates = [Candidate(x) for x in c.fetchall()]
 
     result = [x.__dict__ for x in candidates]
-    return str(result)
+    return json.dumps(result)
 
 
 
