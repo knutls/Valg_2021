@@ -46,6 +46,11 @@ body{
     width: 100%;
     visibility: hidden;
 }
+.DecoLine{
+    width: 100%;
+    margin-top: 150px;
+    visibility: unset  !important;;
+}
 .Klasse-knapper{
     display: flex;
     align-items: center;
