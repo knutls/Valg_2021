@@ -23,16 +23,26 @@ var HttpClient = function() {
 
 // henter info
 var client = new HttpClient();
-client.get('http://solveig.oslo.no/anchoring-summary.json', function(response) {
-    console.log(response)
+client.get('http://stem-im.bakka.party:5000/results', function(response) {
+    console.log(response);
+    var info = JSON.stringify(response);
+    //var info =response
+    //var info = response.response
+    console.log(info);
+
 });
+
+function It() {
+      var number = "123";
+      document.getElementById("myText").innerHTML = number;
+}
 </script>
-<body>
+<body onload="It">
     <div id="header"><h1>Resultater:</h1></div>
     <div class="container">
         <div class="it">
             <div class="klasse"><H1>It:</H1></div>
-            <div class="info"><p></p></div>
+            <div class="info"></div>
         </div>
         <div class="mp">
             <div class="klasse"><H1>Mp:</H1></div>
