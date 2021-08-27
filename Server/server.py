@@ -92,7 +92,7 @@ def sendHome():
 
 @app.route('/<path:path>')
 def sendFile(path):
-    return send_from_directory('Website/', path)
+    return send_from_directory(path_to_root+'Website/', path)
 
 #-----------------------------------------------------------------------------------------
 if __name__ == "__main__":
