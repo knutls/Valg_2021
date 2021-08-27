@@ -88,7 +88,7 @@ def goHome():
 
 @app.route("/home", methods=["GET"])
 def sendHome():
-    src = os.path.join(root_dir(), "Website/Code/HTML/index.html")
+    src = path_to_root+"Website/Code/HTML/index.html"
     return Response(open(src).read(), mimetype="text/html")
 
 @app.route('/<path:path>')
