@@ -66,7 +66,7 @@ def saveVote():
         c.execute(f"INSERT INTO votes VALUES ('{data.token}', '{str(data.ts)}', '{data.vote}')")
         conn.commit()
 
-    return redirect("http://stem-im.bakka.party:5000/home", code=302)
+    return str(is_token_available)
 
 @app.route("/results", methods=["GET"])
 def sendResults():
