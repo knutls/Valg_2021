@@ -10,7 +10,7 @@ ROOT = "Valg_2021"
 
 
 path_to_root = ""
-while os.path.basename(os.path.join(os.getcwd(), path_to_root)) not in (ROOT, ""):
+while os.path.basename(os.path.dirname(os.path.join(os.getcwd(), path_to_root))) not in (ROOT, ""):
     path_to_root += "../"
 DB_PATH = path_to_root + DB_PATH
 
