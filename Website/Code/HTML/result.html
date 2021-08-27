@@ -3,10 +3,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../Code/CSS/style.css">
+    <link rel="stylesheet" href="../../Code/CSS/result.css">
     <title>Resultat</title>
 </head>
-<body>
+<script>
+var HttpClient = function() {
+    this.get = function(aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function() { 
+            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                aCallback(anHttpRequest.responseText);
+        }
+
+        anHttpRequest.open( "GET", aUrl, true );            
+        anHttpRequest.send( null );
+    }
+}
+
+
+// henter info
+var client = new HttpClient();
+client.get('http://stem-im.bakka.party:5000/results', function(response) {
+    console.log(response);
+    var info = JSON.stringify(response);
+    //var info =response
+    //var info = response.response
+    console.log(info);
+
+});
+
+function It() {
+      var number = "123";
+      document.getElementById("myText").innerHTML = number;
+}
+</script>
+<body onload="It">
+    <div id="header"><h1>Resultater:</h1></div>
+    <div class="container">
+        <div class="it">
+            <div class="klasse"><H1>It:</H1></div>
+            <div class="info"></div>
+        </div>
+        <div class="mp">
+            <div class="klasse"><H1>Mp:</H1></div>
+            <div class="info"><p>?</p></div>
+        </div>
+        <div class="st">
+            <div class="klasse"><H1>St:</H1></div>
+            <div class="info"><p>?</p></div>
+        </div>
+ </div>
     
 </body>
 </html>
