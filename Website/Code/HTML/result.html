@@ -54,8 +54,9 @@ var HttpClient = function() {
 
 var client = new HttpClient();
 client.get("http://stem-im.bakka.party:5000/results", function(response) {
-    var info = JSON.stringify(response);
-    var json = JSON.parse(info);
+    console.log(response);
+    var json = JSON.parse(response);
+    console.log(json);
     for(var i = 0; i < json.length; i++) {
         var candidate = json[i];
         console.log(candidate)
