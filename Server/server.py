@@ -8,8 +8,11 @@ app = Flask(__name__)
 DB_PATH = "DB/data.db"
 ROOT = "Valg_2021"
 
-# Change working directory to ROOT
-while os.path.basename(os.getcwd()) not in (ROOT, ""): os.chdir("..")
+
+path_to_root = ""
+while os.path.basename(os.path.join(os.getcwd(), path_to_root)) not in (ROOT, ""):
+    path_to_root += "../"
+DB_PATH = path_to_root + DB_PATH
 
 
 class VoteData:
