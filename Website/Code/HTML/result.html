@@ -6,7 +6,39 @@
     <link rel="stylesheet" href="../../Code/CSS/result.css">
     <title>Resultat</title>
 </head>
-<script>
+
+<body onload="It">
+    <div id="header"><h1>Resultater:</h1></div>
+    <div class="container">
+        <div class="it">
+            <div class="klasse"><H1>Jaime:</H1></div>
+            <div class="info" id="votes0"></div>
+        </div>
+        <div class="mp">
+            <div class="klasse"><H1>Andreas:</H1></div>
+            <div class="info"><span></span></div>
+        </div>
+        <div class="st">
+            <div class="klasse"><H1>Lars</H1></div>
+            <div class="info"><span></span></div>
+        </div>
+        <div class="it">
+            <div class="klasse"><H1>Sondre:</H1></div>
+            <div class="info"><span></span></div>
+        </div>
+        <div class="mp">
+            <div class="klasse"><H1>Simen:</H1></div>
+            <div class="info"><span></span></div>
+        </div>
+        <div class="st">
+            <div class="klasse"><H1>Dino</H1></div>
+            <div class="info"><span></span></div>
+        </div>
+
+ </div>
+ <script>
+
+
 var HttpClient = function() {
     this.get = function(aUrl, aCallback) {
         var anHttpRequest = new XMLHttpRequest();
@@ -20,40 +52,21 @@ var HttpClient = function() {
     }
 }
 
-
-// henter info
-var client = new HttpClient();
-client.get("http://stem-im.bakka.party:5000/results", function(response) {
-    var info = JSON.stringify(response);
-    var json = JSON.parse(info);
-
-    for(var i = 0; i < json.length; i++) {
-        var candidate = json[i];
-        getElementById("name"+candidate.id).innerHTML = candidate.votes;
-    }
-});
-
-function It() {
-      var number = "123";
-      document.getElementById("myText").innerHTML = number;
-}
-</script>
-<body onload="It">
-    <div id="header"><h1>Resultater:</h1></div>
-    <div class="container">
-        <div class="it">
-            <div class="klasse"><H1>It:</H1></div>
-            <div class="info"></div>
-        </div>
-        <div class="mp">
-            <div class="klasse"><H1>Mp:</H1></div>
-            <div class="info"><p>?</p></div>
-        </div>
-        <div class="st">
-            <div class="klasse"><H1>St:</H1></div>
-            <div class="info"><p>?</p></div>
-        </div>
- </div>
-    
+ var client = new HttpClient();
+ client.get("http://stem-im.bakka.party:5000/results", function(response) {
+     var info = JSON.stringify(response);
+     var json = JSON.parse(info);
+ 
+     for(var i = 0; i < json.length; i++) {
+         var candidate = json[i];
+         getElementById("votes"+candidate.id).innerHTML = candidate.votes;
+     }
+ });
+ 
+ function It() {
+       var number = "123";
+       document.getElementById("myText").innerHTML = number;
+ }
+ </script>
 </body>
 </html>
