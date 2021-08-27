@@ -120,7 +120,7 @@ body{
     visibility: hidden;
 }
 .StemPopup{
-    background-color: gray;
+    background-color: lightblue;
 
     position: fixed;
     
@@ -154,7 +154,7 @@ body{
 
 }
 .PopUpTitle{
-    background-color: gray;
+    background-color: lightblue;
     display: flex;
 
 
